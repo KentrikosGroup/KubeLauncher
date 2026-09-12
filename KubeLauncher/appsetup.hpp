@@ -1,7 +1,7 @@
 #pragma once
 
-#include <ulix.hpp>
-#include <extensions/az__pragma_comments.hpp>
+#include <ulix/ulix.hpp>
+#include <ulix/extensions/az__pragma_comments.hpp>
 
 
 #ifdef NDEBUG

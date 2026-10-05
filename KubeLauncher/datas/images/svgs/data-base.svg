@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 120 120"
+   width="120"
+   height="120"
+   version="1.1"
+   id="svg4"
+   sodipodi:docname="download-data-button.svg"
+   inkscape:version="1.4.3 (0d15f75, 2025-12-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="namedview4"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     showgrid="false"
+     inkscape:zoom="2.8284271"
+     inkscape:cx="76.897863"
+     inkscape:cy="35.355339"
+     inkscape:window-width="1280"
+     inkscape:window-height="730"
+     inkscape:window-x="-6"
+     inkscape:window-y="-6"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg4" />
+  <!-- 定义样式 -->
+  <style
+     id="style1">
+    .database-outline {
+      fill: none;
+      stroke: #000;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .database-top {
+      fill: none;
+      stroke: #000;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  </style>
+  <!-- 底部圆柱体（第三个） -->
+  <path
+     d="m 14.346433,77.316915 c 0,-1.908125 1.255437,-0.344288 3.472175,1.090818 2.459859,1.592506 6.074062,3.226496 9.839616,4.072786 8.963578,2.014525 20.159757,3.951265 31.949818,4.078891 11.347104,0.122822 23.106048,-1.093645 31.107031,-4.494996 3.574265,-1.519479 6.618945,-2.570409 8.484057,-3.839009 1.75287,-1.192254 2.43423,-2.711316 2.43423,-0.90849 v 24.753555 c 0,16.50237 -87.286927,16.50237 -87.286927,0 V 77.316915"
+     class="database-outline"
+     id="path1"
+     sodipodi:nodetypes="cssssssssc"
+     style="stroke:#ffffff;stroke-width:8.8168;stroke-dasharray:none;stroke-opacity:1" />
+  <!-- 中间圆柱体（第二个） -->
+  <path
+     d="m 14.346433,49.262891 c 0,0 5.984942,3.215737 14.63033,5.402651 8.403643,2.12576 19.307024,3.223821 30.631352,3.26502 10.581507,0.03849 21.485706,-1.073586 29.290711,-3.226554 7.973367,-2.199408 12.734534,-5.441117 12.734534,-5.441117 v 24.753551 c 0,3.433373 -5.26762,6.156186 -11.000508,8.158834 -3.064256,1.070425 -6.429668,2.052759 -10.281141,2.740056 -9.13563,1.630257 -20.260045,1.805629 -31.214751,1.013829 C 41.301339,85.362807 33.619657,83.884669 27.816939,82.192705 20.795767,80.145464 14.346433,77.783782 14.346433,74.016442 V 49.262891"
+     class="database-outline"
+     id="path2"
+     sodipodi:nodetypes="cssscssssssc"
+     style="stroke:#ffffff;stroke-width:8.8168;stroke-dasharray:none;stroke-opacity:1" />
+  <!-- 顶部圆柱体（第一个）的侧面 -->
+  <path
+     d="m 14.346433,21.208866 c 0,-16.5023674 87.286927,-16.5023674 87.286927,0 v 24.753552 c 0,3.10792 -3.11507,5.261869 -8.087662,7.151405 -16.487323,6.265027 -53.932194,6.249636 -70.520762,-0.196455 -4.973782,-1.932744 -8.678503,-3.865257 -8.678503,-6.95495 V 21.208866"
+     class="database-outline"
+     id="path3"
+     style="stroke:#ffffff;stroke-width:8.8168;stroke-dasharray:none;stroke-opacity:1"
+     sodipodi:nodetypes="csssssc" />
+  <!-- 顶部圆柱体的顶面（椭圆，有透视感） -->
+  <ellipse
+     cx="58.097397"
+     cy="20.919685"
+     rx="43.643471"
+     ry="12.430288"
+     class="database-top"
+     id="ellipse3"
+     style="stroke:#ffffff;stroke-width:8.8168;stroke-dasharray:none;stroke-opacity:1" />
+  <!-- 中间圆柱体的顶面 -->
+</svg>

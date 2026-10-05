@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   role="img"
+   width="48px"
+   height="48px"
+   viewBox="0 0 24 24"
+   aria-labelledby="userIconTitle"
+   stroke="#FFFFFF"
+   stroke-width="1"
+   stroke-linecap="square"
+   stroke-linejoin="miter"
+   fill="none"
+   color="#FFFFFF"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="mainwindow.left-sidebar.account-button.svg"
+   inkscape:version="1.4.3 (0d15f75, 2025-12-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:zoom="14.318912"
+     inkscape:cx="24.05909"
+     inkscape:cy="19.135532"
+     inkscape:window-width="1280"
+     inkscape:window-height="730"
+     inkscape:window-x="-6"
+     inkscape:window-y="-6"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" />
+  <title
+     id="userIconTitle">User</title>
+  <path
+     stroke-linecap="round"
+     d="M5.5,19.5 C7.83333333,18.5 9.33333333,17.6666667 10,17 C11,16 8,16 8,11 C8,7.66666667 9.33333333,6 12,6 C14.6666667,6 16,7.66666667 16,11 C16,16 13,16 14,17 C14.6666667,17.6666667 16.1666667,18.5 18.5,19.5"
+     id="path1"
+     style="stroke-width:1.5;stroke-dasharray:none" />
+  <circle
+     cx="12"
+     cy="12"
+     r="10"
+     id="circle1"
+     style="stroke-width:1.5;stroke-dasharray:none" />
+</svg>

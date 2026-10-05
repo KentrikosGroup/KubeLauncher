@@ -1,10 +1,9 @@
 #pragma once
 
-#include "ulix/recsize.hpp"
-#include "ulix/screen.hpp"
-#include <print>
+#include "ulix/align.hpp"
+#include <filesystem>
 #include <ulix/ulix.hpp>
-#include <ulix/extensions/az__pragma_comments.hpp>
+#include <ulix/extensions/az.comments.hpp>
 
 
 static ulx::str get_env(const char* name) {
@@ -31,28 +30,44 @@ inline std::filesystem::path get_cache_path() {
 }
 
 namespace appsetup {
-    inline ulx::wininfo window_info;
-    inline ulx::appinfo app_info;
-    inline ulx::renderinfo render_info;
+    inline static ulx::wininfo window_info;
+    inline static ulx::appinfo app_info;
+    inline static ulx::renderinfo render_info;
+    inline static std::filesystem::path cwd;
+    inline static std::filesystem::path datas_dir;
+    
+    inline static constexpr auto svg(ulx::strvw name) {
+        return ulx::file((datas_dir / "images" / "svgs" / name).string());
+    }
 
-    inline void init(ulx::arr<ulx::u32, 3> version, ulx::context::render_callback render_callback) {
+    inline void init(char* argv[], ulx::arr<ulx::u32, 3> version, ulx::context::render_callback render_callback) {
+        cwd = std::filesystem::path(argv[0]).parent_path();
+        datas_dir = cwd / "datas";
+
         window_info = ulx::wininfo("KubeLauncher", "KubeLauncherWindowClass")
             .unattr(ulx::winattr::titled)
             .size(ulx::recsize::from_ratio(ulx::screen::width() * 0.8f, 0.625f))
             .min(ulx::recsize::from_ratio(ulx::screen::width() * 0.8f, 0.625f))
-            .max(ulx::screen::size());
+            .max(ulx::screen::size())
+            .vtitlebar(40.0f).vclose(48.5f)
+            .vmin(48.5f).vmax(48.5f)
+        ;
         app_info = ulx::appinfo("KubeLauncher", (get_cache_path() / "cache.bin").string())
-            .version(version[0], version[1], version[2]);
-        render_info = ulx::renderinfo(render_callback);
+            .version(version[0], version[1], version[2])
+            .icon((datas_dir / "images" / "icon.ico").string());
+        render_info = ulx::renderinfo(render_callback)
+            .present_mode(ulx::prefer_mailmode)
+            .max_textures(65535);
     }
 
-    inline int exec(ulx::context::ticktimer tick_timer) {
+    inline int exec(ulx::u64 delay, ulx::context::tick_callback tick) {
         ulx::context ctx = ulx::context(app_info, window_info, render_info);
-        ctx.set_pos(ulx::recpos(
+        ctx.mov(ulx::recpos(
             (ulx::screen::width() - ctx.width()) / 2,
             (ulx::screen::height() - ctx.height()) / 2
         ));
-        ctx.set_timer(tick_timer);
+        ctx.set_tick(tick);
+        ctx.set_delay(delay);
 
         ctx.show();
         return ctx.exec();

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 100 100"
+   width="100"
+   height="100"
+   version="1.1"
+   id="svg8"
+   sodipodi:docname="download-shader-button.svg"
+   inkscape:version="1.4.3 (0d15f75, 2025-12-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs8" />
+  <sodipodi:namedview
+     id="namedview8"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     showgrid="false"
+     inkscape:zoom="3.436539"
+     inkscape:cx="65.036364"
+     inkscape:cy="50.341347"
+     inkscape:window-width="1280"
+     inkscape:window-height="730"
+     inkscape:window-x="-6"
+     inkscape:window-y="-6"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg8" />
+  <!-- 太阳中心圆形边框（白色） -->
+  <circle
+     cx="50"
+     cy="50"
+     r="20"
+     fill="none"
+     stroke="#FFFFFF"
+     stroke-width="3"
+     id="circle1"
+     style="stroke-width:7.55905512;stroke-dasharray:none" />
+  <!-- 光束（8个方向，白色） -->
+  <g
+     stroke="#FFFFFF"
+     stroke-width="3"
+     stroke-linecap="round"
+     id="g8">
+    <!-- 上下光束 -->
+    <line
+       x1="50"
+       y1="4.673913"
+       x2="50"
+       y2="20.326086"
+       id="line1"
+       style="stroke-width:7.55905512;stroke-dasharray:none" />
+    <line
+       x1="50"
+       y1="79.326492"
+       x2="50"
+       y2="94.967224"
+       id="line2"
+       style="stroke-width:7.55905512;stroke-dasharray:none" />
+    <!-- 左右光束 -->
+    <line
+       x1="3.77953"
+       y1="50"
+       x2="19.431704"
+       y2="50"
+       id="line3"
+       style="stroke-width:7.55906;stroke-dasharray:none" />
+    <line
+       x1="80.673912"
+       y1="50"
+       x2="96.326088"
+       y2="50"
+       id="line4"
+       style="stroke-width:7.55905512;stroke-dasharray:none" />
+    <!-- 对角线光束 -->
+    <line
+       x1="25"
+       y1="25"
+       x2="15"
+       y2="15"
+       id="line5"
+       style="stroke-width:7.55905512;stroke-dasharray:none" />
+    <line
+       x1="75"
+       y1="25"
+       x2="85"
+       y2="15"
+       id="line6"
+       style="stroke-width:7.55905512;stroke-dasharray:none" />
+    <line
+       x1="25"
+       y1="75"
+       x2="15"
+       y2="85"
+       id="line7"
+       style="stroke-width:7.55905512;stroke-dasharray:none" />
+    <line
+       x1="75"
+       y1="75"
+       x2="85"
+       y2="85"
+       id="line8"
+       style="stroke-width:7.55905512;stroke-dasharray:none" />
+  </g>
+</svg>

@@ -50,8 +50,7 @@ namespace appsetup {
             .min(ulx::recsize::from_ratio(ulx::screen::width() * 0.8f, 0.625f))
             .max(ulx::screen::size())
             .vtitlebar(40.0f).vclose(48.5f)
-            .vmin(48.5f).vmax(48.5f)
-        ;
+            .vmin(48.5f).vmax(48.5f);
         app_info = ulx::appinfo("KubeLauncher", (get_cache_path() / "cache.bin").string())
             .version(version[0], version[1], version[2])
             .icon((datas_dir / "images" / "icon.ico").string());

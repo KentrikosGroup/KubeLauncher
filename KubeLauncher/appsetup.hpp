@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ulix/align.hpp"
+#include "ulix/present_mode.hpp"
 #include <filesystem>
 #include <ulix/ulix.hpp>
 #include <ulix/extensions/az.comments.hpp>
@@ -55,7 +56,7 @@ namespace appsetup {
             .version(version[0], version[1], version[2])
             .icon((datas_dir / "images" / "icon.ico").string());
         render_info = ulx::renderinfo(render_callback)
-            .present_mode(ulx::prefer_mailmode)
+            .present_mode(ulx::immediatemode)
             .max_textures(65535);
     }
 

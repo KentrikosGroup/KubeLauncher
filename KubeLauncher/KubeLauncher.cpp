@@ -1,4 +1,4 @@
-// #define ULIXRELEASE
+#define ULIXRELEASE
 
 #include "ulix/__class_decl/context.hpp"
 #include "ulix/align.hpp"

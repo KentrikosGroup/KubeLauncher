@@ -30,9 +30,9 @@
      inkscape:pageopacity="0"
      inkscape:pagecheckerboard="1"
      inkscape:deskcolor="#505050"
-     inkscape:zoom="7.1594562"
-     inkscape:cx="26.18914"
-     inkscape:cy="51.121201"
+     inkscape:zoom="14.318912"
+     inkscape:cx="32.57929"
+     inkscape:cy="44.277106"
      inkscape:window-width="1280"
      inkscape:window-height="730"
      inkscape:window-x="-6"
@@ -42,17 +42,17 @@
   <title
      id="rectangleIconTitle">Rectangle</title>
   <rect
-     width="6.5060234"
-     height="6.5060229"
-     x="7.6624999"
-     y="9.9485064"
-     rx="1.1250005"
-     ry="1.1249996"
+     width="6.4252152"
+     height="6.1554747"
+     x="7.7885385"
+     y="10.321164"
+     rx="1.1802497"
+     ry="1.2015014"
      id="rect1-8"
-     style="stroke-width:1.325;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;paint-order:normal" />
+     style="stroke-width:1.28088;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;paint-order:normal" />
   <path
-     style="fill:none;stroke:#ffffff;stroke-width:1.325;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
-     d="m 9.57,8.11 h 4 c 1.372778,0 2.402508,1.4538506 2.46,2.31 v 4.74"
+     style="fill:none;stroke:#ffffff;stroke-width:1.28075;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+     d="m 9.6723459,8.5817175 h 3.9503181 c 1.355727,0 2.372667,1.3755168 2.429445,2.1855365 v 4.484606"
      id="path1"
      sodipodi:nodetypes="cscc" />
 </svg>

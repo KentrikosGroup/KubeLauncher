@@ -1,4 +1,4 @@
-#define ULIXRELEASE
+// #define ULIXRELEASE
 
 #include "ulix/__class_decl/context.hpp"
 #include "ulix/align.hpp"
@@ -21,7 +21,6 @@ struct wstates {
 };
 
 auto render(ulx::context& ctx) -> ulx::scene {
-    kl::button::start();
     auto scene = ulx::scene()
         .back({22, 22, 22})
         .box(ulx::verbox).pad(0)
@@ -41,8 +40,7 @@ auto render(ulx::context& ctx) -> ulx::scene {
                     if (ctx.is_maxed()) {
                         ctx.restore();
                         return;
-                    }
-                    ctx.max();
+                    } ctx.max();
                 }, ulx::color(60, 60, 60, 240), ulx::color(60, 60, 60, 250))
                 .size({48.5f, 40.0f})
 
@@ -73,7 +71,6 @@ auto render(ulx::context& ctx) -> ulx::scene {
                 .padding = 0,
             })
         );
-    kl::button::end(ctx);
 
     return scene;
 }

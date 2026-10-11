@@ -2,7 +2,6 @@
 
 #include "ulix/__class_decl/context.hpp"
 #include "ulix/align.hpp"
-#include "ulix/font.hpp"
 #include "ulix/box.hpp"
 #include "appsetup.hpp"
 #include "ulix/color.hpp"

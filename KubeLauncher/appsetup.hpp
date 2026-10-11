@@ -1,9 +1,8 @@
 #pragma once
 
-#include "ulix/align.hpp"
-#include "ulix/present_mode.hpp"
 #include <filesystem>
-#include <ulix/ulix.hpp>
+#include <ulix/context.hpp>
+#include <ulix/screen.hpp>
 #include <ulix/extensions/az.comments.hpp>
 
 
@@ -46,7 +45,7 @@ namespace appsetup {
         datas_dir = cwd / "datas";
 
         window_info = ulx::wininfo("KubeLauncher", "KubeLauncherWindowClass")
-            .unattr(ulx::winattr::titled)
+            .unattr(ulx::winattr::titledattr)
             .size(ulx::recsize::from_ratio(ulx::screen::width() * 0.8f, 0.625f))
             .min(ulx::recsize::from_ratio(ulx::screen::width() * 0.8f, 0.625f))
             .max(ulx::screen::size())
@@ -56,8 +55,8 @@ namespace appsetup {
             .version(version[0], version[1], version[2])
             .icon((datas_dir / "images" / "icon.ico").string());
         render_info = ulx::renderinfo(render_callback)
-            .present_mode(ulx::immediatemode)
-            .max_textures(65535);
+            .present(ulx::immediatemode)
+            .textures(65535);
     }
 
     inline int exec(ulx::u64 delay, ulx::context::tick_callback tick) {

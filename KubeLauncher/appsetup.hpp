@@ -1,5 +1,6 @@
 #pragma once
 
+#include "ulix/point.hpp"
 #include <filesystem>
 #include <ulix/context.hpp>
 #include <ulix/screen.hpp>
@@ -46,8 +47,8 @@ namespace appsetup {
 
         window_info = ulx::wininfo("KubeLauncher", "KubeLauncherWindowClass")
             .unattr(ulx::winattr::titledattr)
-            .size(ulx::recsize::from_ratio(ulx::screen::width() * 0.8f, 0.625f))
-            .min(ulx::recsize::from_ratio(ulx::screen::width() * 0.8f, 0.625f))
+            .size(ulx::size::from_ratio(ulx::screen::width() * 0.8f, 0.625f))
+            .min(ulx::size::from_ratio(ulx::screen::width() * 0.8f, 0.625f))
             .max(ulx::screen::size())
             .vtitlebar(40.0f).vclose(48.5f)
             .vmin(48.5f).vmax(48.5f);
@@ -61,10 +62,7 @@ namespace appsetup {
 
     inline int exec(ulx::u64 delay, ulx::context::tick_callback tick) {
         ulx::context ctx = ulx::context(app_info, window_info, render_info);
-        ctx.mov(ulx::recpos(
-            (ulx::screen::width() - ctx.width()) / 2,
-            (ulx::screen::height() - ctx.height()) / 2
-        ));
+        ctx.mov(ulx::point::center_to(ctx.size(), ulx::screen::size()));
         ctx.set_tick(tick);
         ctx.set_delay(delay);
 

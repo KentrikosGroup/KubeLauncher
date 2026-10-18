@@ -1,31 +1,32 @@
 #pragma once
 
+#include "ulix/autotmp.hpp"
 #include "ulix/point.hpp"
+#include "ulix/present_mode.hpp"
+#include "ulix/stablestr.hpp"
 #include <filesystem>
 #include <ulix/context.hpp>
 #include <ulix/screen.hpp>
 #include <ulix/extensions/az.comments.hpp>
 
 
-static ulx::str get_env(const char* name) {
-    char* buffer = nullptr;
-    size_t size = 0;
-    _dupenv_s(&buffer, &size, name);
-    if (!buffer) return {};
-    ulx::str value = ulx::str(buffer);
-    free(buffer);
+inline static constexpr ulx::pathstr get_env(const char* name) {
+    ulx::autotmp<char*> tmp(nullptr);
+    _dupenv_s(tmp.temp(), tmp.size(), name);
+    if (!tmp) return {};
+    ulx::pathstr value(*tmp.temp());
     return value;
 }
 
-inline std::filesystem::path get_cache_path() {
-    ulx::str local_appdata = get_env("LOCALAPPDATA");
-    if (local_appdata.empty()) ulx::log::err("LOCALAPPDATA not set");
+inline static constexpr std::filesystem::path get_cache_path() {
+    ulx::pathstr local_appdata = get_env("LOCALAPPDATA");
+    if (!local_appdata) std::_Exit(1);
 
-    std::filesystem::path cache_dir = std::filesystem::path(local_appdata) / "KubeLauncher" / "cache";
+    std::filesystem::path cache_dir = std::filesystem::path(local_appdata.cstr()) / "KubeLauncher" / "cache";
     std::error_code error_code;
 
     if (!std::filesystem::create_directories(cache_dir, error_code))
-        if (error_code) ulx::log::err("Failed to create cache directory: {}", error_code.message());
+        if (error_code) std::_Exit(1);
 
     return cache_dir;
 }
@@ -54,9 +55,9 @@ namespace appsetup {
             .vmin(48.5f).vmax(48.5f);
         app_info = ulx::appinfo("KubeLauncher", (get_cache_path() / "cache.bin").string())
             .version(version[0], version[1], version[2])
-            .icon((datas_dir / "images" / "icon.ico").string());
+            .icon(ulx::file((datas_dir / "images" / "icon.ico").string()));
         render_info = ulx::renderinfo(render_callback)
-            .present(ulx::immediatemode)
+            .present(ulx::prefer_mailmode)
             .textures(65535);
     }
 

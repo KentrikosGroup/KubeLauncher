@@ -6,6 +6,7 @@
 #include "appsetup.hpp"
 #include "ulix/color.hpp"
 #include "ulix/element.hpp"
+#include "ulix/font.hpp"
 #include "ulix/point.hpp"
 #include "ulix/size.hpp"
 #include "ulix/wstates.hpp"
@@ -36,14 +37,14 @@ auto render(ulx::context& ctx) -> ulx::scene {
             )
             .child(wstates::titlebar::max_button.element("max_button", 
                 event_pressed [](ulx::context& ctx, ulx::element& slf) {
-                    if (ctx.is_maxed()) {
-                        ctx.restore();
+                    if (ctx.win_maxed()) {
+                        ctx.win_restore();
                         return;
-                    } ctx.max();
+                    } ctx.win_max();
                 }, ulx::color(60, 60, 60, 240), ulx::color(60, 60, 60, 250))
                 .size({48.5f, 40.0f})
 
-                .when(ctx.is_maxed(), event_when [](ulx::element& slf) {
+                .when(ctx.win_maxed(), event_when [](ulx::element& slf) {
                     slf.child(ulx::element::unvisible("icon", ulx::geom({25, 25}, {11.75f, 7.5f}))
                         .texture(appsetup::svg("restore.svg"), {25, 25})
                     );
@@ -55,7 +56,7 @@ auto render(ulx::context& ctx) -> ulx::scene {
             )
             .child(wstates::titlebar::min_button.element("min_button", 
                 event_pressed [](ulx::context& ctx, ulx::element& slf) {
-                    ctx.min();
+                    ctx.win_min();
                 }, ulx::color(60, 60, 60, 240), ulx::color(60, 60, 60, 250))
                 .size({48.5f, 40.0f})
                 .child(ulx::element::unvisible("icon", ulx::geom({25, 25}, {11.75f, 7.5f}))
@@ -69,7 +70,8 @@ auto render(ulx::context& ctx) -> ulx::scene {
                 .align = ulx::alignright,
                 .padding = 0,
             })
-        );
+        ).child(ulx::element::text("Hello!你好！A~", ulx::font(R"(D:\KubeLauncher\KubeLauncher\Microsoft YaHei.ttf)")))
+        .child(ulx::element().size({50, 50}).texture(ulx::file(R"(D:\Images\Vulkan.png)")));
 }
 
 auto main(int argc, char* argv[]) -> int {

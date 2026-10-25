@@ -63,11 +63,11 @@ namespace appsetup {
 
     inline int exec(ulx::u64 delay, ulx::context::tick_callback tick) {
         ulx::context ctx = ulx::context(app_info, window_info, render_info);
-        ctx.mov(ulx::point::center_to(ctx.size(), ulx::screen::size()));
+        ctx.win_move(ulx::point::center_to(ctx.win_size(), ulx::screen::size()));
         ctx.set_tick(tick);
         ctx.set_delay(delay);
 
-        ctx.show();
+        ctx.win_show();
         return ctx.exec();
     }
 }

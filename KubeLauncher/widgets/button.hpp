@@ -4,14 +4,14 @@
 #include <ulix/align.hpp>
 #include <ulix/cursor.hpp>
 #include <ulix/color.hpp>
-#include <ulix/wstates.hpp>
+#include <ulix/effents.hpp>
 #include <ulix/context.hpp>
 
 namespace kl {
     struct button {
-        ulx::wst::clicked clicked_state;
+        ulx::clicked clicked_state;
         ulx::color empty_color;
-        ulx::wst::gradcolor background;
+        ulx::gradcolor background;
         ulx::element::event::mouse clicked_event;
         ulx::color pressed_color;
         ulx::color hovered_color;

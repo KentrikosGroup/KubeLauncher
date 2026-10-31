@@ -1,51 +1,43 @@
 #pragma once
 
-#include "ulix/autotmp.hpp"
+#include "ulix/log.hpp"
+#include "ulix/path.hpp"
 #include "ulix/point.hpp"
 #include "ulix/present_mode.hpp"
 #include "ulix/stablestr.hpp"
 #include <filesystem>
+#include <print>
 #include <ulix/context.hpp>
 #include <ulix/screen.hpp>
 #include <ulix/extensions/az.comments.hpp>
 
-
-inline static constexpr ulx::pathstr get_env(const char* name) {
-    ulx::autotmp<char*> tmp(nullptr);
-    _dupenv_s(tmp.temp(), tmp.size(), name);
-    if (!tmp) return {};
-    ulx::pathstr value(*tmp.temp());
-    return value;
-}
-
-inline static constexpr std::filesystem::path get_cache_path() {
-    ulx::pathstr local_appdata = get_env("LOCALAPPDATA");
-    if (!local_appdata) std::_Exit(1);
-
-    std::filesystem::path cache_dir = std::filesystem::path(local_appdata.cstr()) / "KubeLauncher" / "cache";
-    std::error_code error_code;
-
-    if (!std::filesystem::create_directories(cache_dir, error_code))
-        if (error_code) std::_Exit(1);
-
-    return cache_dir;
-}
-
-namespace appsetup {
+namespace kl {
+    inline static constexpr auto showerr(ulx::stablestr<> info) {
+        std::println("\x1b[91mKubeLauncher Error:\x1b[0m {}", info);
+    }
+    
+    inline static constexpr auto ensure_cachedir_exists(ulx::path cwd) -> void {
+        auto cache_path = cwd.with("cache");
+        if (cache_path.exists()) return;
+        if (!std::filesystem::create_directory(cache_path.str().cstr())) 
+            showerr("failed to make cache directory");
+    }
+    
     inline static ulx::wininfo window_info;
     inline static ulx::appinfo app_info;
     inline static ulx::renderinfo render_info;
-    inline static std::filesystem::path cwd;
-    inline static std::filesystem::path datas_dir;
+    inline static ulx::path cwd;
+    inline static ulx::path datas_dir;
     
-    inline static constexpr auto svg(ulx::strvw name) {
-        return ulx::file((datas_dir / "images" / "svgs" / name).string());
+    inline static constexpr auto svg(ulx::strvw name) -> ulx::path {
+        return datas_dir.with("images", "svgs", name).str();
     }
 
     inline void init(char* argv[], ulx::arr<ulx::u32, 3> version, ulx::context::render_callback render_callback) {
-        cwd = std::filesystem::path(argv[0]).parent_path();
-        datas_dir = cwd / "datas";
+        cwd = ulx::path(argv[0]).parent();
+        datas_dir = cwd.with("datas");
 
+        ensure_cachedir_exists(cwd);
         window_info = ulx::wininfo("KubeLauncher", "KubeLauncherWindowClass")
             .unattr(ulx::winattr::titledattr)
             .size(ulx::size::from_ratio(ulx::screen::width() * 0.8f, 0.625f))
@@ -53,9 +45,9 @@ namespace appsetup {
             .max(ulx::screen::size())
             .vtitlebar(40.0f).vclose(48.5f)
             .vmin(48.5f).vmax(48.5f);
-        app_info = ulx::appinfo("KubeLauncher", (get_cache_path() / "cache.bin").string())
+        app_info = ulx::appinfo("KubeLauncher", cwd.with("cache"))
             .version(version[0], version[1], version[2])
-            .icon(ulx::file((datas_dir / "images" / "icon.ico").string()));
+            .icon(datas_dir.with("images", "icon.ico"));
         render_info = ulx::renderinfo(render_callback)
             .present(ulx::prefer_mailmode)
             .textures(65535);

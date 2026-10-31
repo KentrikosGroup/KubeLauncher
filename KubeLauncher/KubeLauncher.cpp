@@ -1,22 +1,15 @@
 // #define ULIXRELEASE
-
-#include "ulix/__class_decl/context.hpp"
-#include "ulix/align.hpp"
-#include "ulix/box.hpp"
 #include "appsetup.hpp"
 #include "ulix/color.hpp"
 #include "ulix/element.hpp"
-#include "ulix/font.hpp"
-#include "ulix/point.hpp"
-#include "ulix/size.hpp"
-#include "ulix/wstates.hpp"
-#include "widgets/button.hpp"
 
-inline static auto Microsoft_Yahei = ulx::font(R"(D:\KubeLauncher\KubeLauncher\Microsoft YaHei.ttf)");
+#include <ulix/gradbutton.hpp>
 
-inline static auto close_button = kl::button{ulx::color(22, 22, 22)};
-inline static auto max_button = kl::button{ulx::color(22, 22, 22)};
-inline static auto min_button = kl::button{ulx::color(22, 22, 22)};
+inline static auto Microsoft_Yahei = ulx::font("msyh.ttc");
+
+inline static auto close_button = ulx::gradbutton(ulx::color(22, 22, 22));
+inline static auto max_button = ulx::gradbutton(ulx::color(22, 22, 22));
+inline static auto min_button = ulx::gradbutton(ulx::color(22, 22, 22));
 
 auto render(ulx::context& ctx) -> ulx::scene {
     return ulx::scene()
@@ -29,7 +22,7 @@ auto render(ulx::context& ctx) -> ulx::scene {
                     ctx.exit();
                 }, ulx::color(196, 43, 28, 240), ulx::color(196, 43, 28, 255))
                 .size({48.5f, 40.0f})
-                .icon("icon", appsetup::svg("close.svg"), ulx::geom({25, 25}, {11.75f, 7.5f}))
+                .icon("icon", kl::svg("close.svg"), {25, 25})
             )
             .child(max_button.element("max_button",
                 event_pressed [](ulx::context& ctx, ulx::element& slf) {
@@ -41,9 +34,9 @@ auto render(ulx::context& ctx) -> ulx::scene {
                 .size({48.5f, 40.0f})
 
                 .when(ctx.win_maxed(), event_when [](ulx::element& slf) {
-                    slf.icon("icon", appsetup::svg("restore.svg"), ulx::geom({25, 25}, {11.75f, 7.5f}));
+                    slf.icon("icon", kl::svg("restore.svg"), {25, 25});
                 }, event_else [](ulx::element& slf) {
-                    slf.icon("icon", appsetup::svg("rectangle.svg"), ulx::geom({25, 25}, {11.75f, 7.5f}));
+                    slf.icon("icon", kl::svg("rectangle.svg"), {25, 25});
                 })
             )
             .child(min_button.element("min_button",
@@ -51,7 +44,7 @@ auto render(ulx::context& ctx) -> ulx::scene {
                     ctx.win_min();
                 }, ulx::color(60, 60, 60, 240), ulx::color(60, 60, 60, 250))
                 .size({48.5f, 40.0f})
-                .icon("icon", appsetup::svg("minimize.svg"), ulx::geom({25, 25}, {11.75f, 7.5f}))
+                .icon("icon", kl::svg("minimize.svg"), {25, 25})
             )
 
             .back({22, 22, 22})
@@ -62,10 +55,11 @@ auto render(ulx::context& ctx) -> ulx::scene {
             })
         )
         .child(ulx::element("english", "This is English"))
-        .child(ulx::element("chinese", "中文", Microsoft_Yahei.make()));
+        .child(ulx::element("chinese", "中文", Microsoft_Yahei.make()))
+        .child(ulx::element("fullwidth", "Fullwidth「Punct」", Microsoft_Yahei.make()));
 }
 
 auto main(int argc, char* argv[]) -> int {
-    appsetup::init(argv, {0, 0, 13}, render);
-    return appsetup::exec(0, {});
+    kl::init(argv, {0, 0, 24}, render);
+    return kl::exec(0, {});
 }

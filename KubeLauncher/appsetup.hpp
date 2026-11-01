@@ -1,6 +1,5 @@
 #pragma once
 
-#include "ulix/log.hpp"
 #include "ulix/path.hpp"
 #include "ulix/point.hpp"
 #include "ulix/present_mode.hpp"
@@ -33,7 +32,7 @@ namespace kl {
         return datas_dir.with("images", "svgs", name).str();
     }
 
-    inline void init(char* argv[], ulx::arr<ulx::u32, 3> version, ulx::context::render_callback render_callback) {
+    inline void init(char* argv[], ulx::arr<ulx::u32, 3> version, ulx::context::rendercallback render_callback) {
         cwd = ulx::path(argv[0]).parent();
         datas_dir = cwd.with("datas");
 
@@ -49,15 +48,13 @@ namespace kl {
             .version(version[0], version[1], version[2])
             .icon(datas_dir.with("images", "icon.ico"));
         render_info = ulx::renderinfo(render_callback)
-            .present(ulx::prefer_mailmode)
-            .textures(65535);
+            .present(ulx::prefer_mailmode);
     }
 
-    inline int exec(ulx::u64 delay, ulx::context::tick_callback tick) {
+    inline int exec(ulx::u64 delay, ulx::context::tickcallback tick) {
         ulx::context ctx = ulx::context(app_info, window_info, render_info);
         ctx.win_move(ulx::point::center_to(ctx.win_size(), ulx::screen::size()));
-        ctx.set_tick(tick);
-        ctx.set_delay(delay);
+        ctx.set_tick(tick, delay);
 
         ctx.win_show();
         return ctx.exec();

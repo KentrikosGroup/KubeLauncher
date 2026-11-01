@@ -2,6 +2,8 @@
 #include "appsetup.hpp"
 #include "ulix/color.hpp"
 #include "ulix/element.hpp"
+#include "ulix/log.hpp"
+#include "ulix/types.hpp"
 
 #include <ulix/gradbutton.hpp>
 
@@ -60,6 +62,12 @@ auto render(ulx::context& ctx) -> ulx::scene {
 }
 
 auto main(int argc, char* argv[]) -> int {
-    kl::init(argv, {0, 0, 24}, render);
-    return kl::exec(0, {});
+    kl::init(argv, {0, 0, 25}, render);
+    return kl::exec(0, [](ulx::context& ctx, ulx::u64 elasped) {
+        static bool a = true;
+        if (a) {
+            a = false;
+            ulx::info("{}", elasped);
+        }
+    });
 }

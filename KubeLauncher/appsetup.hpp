@@ -1,9 +1,5 @@
 #pragma once
 
-#include "ulix/path.hpp"
-#include "ulix/point.hpp"
-#include "ulix/present_mode.hpp"
-#include "ulix/stablestr.hpp"
 #include <filesystem>
 #include <print>
 #include <ulix/context.hpp>
@@ -47,8 +43,7 @@ namespace kl {
         app_info = ulx::appinfo("KubeLauncher", cwd.with("cache"))
             .version(version[0], version[1], version[2])
             .icon(datas_dir.with("images", "icon.ico"));
-        render_info = ulx::renderinfo(render_callback)
-            .present(ulx::prefer_mailmode);
+        render_info = ulx::renderinfo(render_callback);
     }
 
     inline int exec(ulx::u64 delay, ulx::context::tickcallback tick) {

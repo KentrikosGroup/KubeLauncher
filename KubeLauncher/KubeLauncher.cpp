@@ -2,7 +2,6 @@
 #include "appsetup.hpp"
 #include "ulix/color.hpp"
 #include "ulix/element.hpp"
-#include "ulix/log.hpp"
 #include "ulix/types.hpp"
 
 #include <ulix/gradbutton.hpp>
@@ -55,17 +54,10 @@ auto render(ulx::context& ctx) -> ulx::scene {
                 .align = ulx::alignright,
                 .padding = 0,
             })
-        )
-        .child(ulx::element("english", "This is English"))
-        .child(ulx::element("chinese", "中文", Microsoft_Yahei.make()))
-        .child(ulx::element("fullwidth", "Fullwidth「Punct」", Microsoft_Yahei.make()));
+        );
 }
 
 auto main(int argc, char* argv[]) -> int {
     kl::init(argv, {0, 0, 25}, render);
-    return kl::exec(0, [](ulx::context& ctx, ulx::u64 elasped) {
-        static bool a = true; if (a) {
-            a = false;            ulx::info("{}", elasped);
-        }
-    });
+    return kl::exec(0, {});
 }

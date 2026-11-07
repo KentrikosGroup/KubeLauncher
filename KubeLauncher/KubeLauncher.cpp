@@ -54,7 +54,8 @@ auto render(ulx::context& ctx) -> ulx::scene {
                 .align = ulx::alignright,
                 .padding = 0,
             })
-        );
+        )
+        .child(ulx::element("c", "Test"));
 }
 
 auto main(int argc, char* argv[]) -> int {

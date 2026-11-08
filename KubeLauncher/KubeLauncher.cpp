@@ -2,6 +2,8 @@
 #include "appsetup.hpp"
 #include "ulix/color.hpp"
 #include "ulix/element.hpp"
+#include "ulix/font.hpp"
+#include "ulix/size.hpp"
 #include "ulix/types.hpp"
 
 #include <ulix/gradbutton.hpp>
@@ -55,7 +57,8 @@ auto render(ulx::context& ctx) -> ulx::scene {
                 .padding = 0,
             })
         )
-        .child(ulx::element("c", "Test"));
+        .child(ulx::element("hello", "Hello, KubeLauncher!", Microsoft_Yahei))
+        .child(ulx::element("text").texture(kl::cwd.with("kentrikos.png"), 12, 5, 11).size(ulx::size::autos()));
 }
 
 auto main(int argc, char* argv[]) -> int {

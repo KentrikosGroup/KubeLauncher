@@ -56,12 +56,12 @@ auto render(ulx::context& ctx) -> ulx::scene {
             .box(ulx::horbox).align(ulx::alignright)
         )
         .child(ulx::element("texture")
-            .size(ulx::size::autos())
+            .size({200, 200})
             .back({25, 25, 25, 255})
             .pos({50, 25})
             .corner(15)
             .shadow({0, 0, 0, 255}, 30, 10, {0, 3}, 1.0f)
-            .texture(ulx::path(R"(D:\Images\kentrikos.png)"))
+            .texture(ulx::path(R"(D:\Images\kentrikos_big.png)"))
         );
 }
 

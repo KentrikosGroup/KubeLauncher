@@ -35,11 +35,11 @@ namespace kl {
         ensure_cachedir_exists(cwd);
         window_info = ulx::wininfo("KubeLauncher")
             .unattr(ulx::winattr::titledattr)
-            .size(ulx::size::from_ratio(ulx::screen::width() * 0.8f, 0.625f))
-            .min(ulx::size::from_ratio(ulx::screen::width() * 0.8f, 0.625f))
+            .size(ulx::size::ratio(ulx::screen::w() * 0.8f, 0.625f))
+            .min(ulx::size::ratio(ulx::screen::w() * 0.8f, 0.625f))
             .max(ulx::screen::size())
-            .vtitlebar(40.0f).vclose(48.5f)
-            .vmin(48.5f).vmax(48.5f);
+            .vtitlebar(40).vclose(48.5)
+            .vmin(48.5).vmax(48.5);
         app_info = ulx::appinfo("KubeLauncher", cwd.with("cache"))
             .icon(datas_dir.with("images", "icon.ico"));
         render_info = ulx::renderinfo(render_callback);

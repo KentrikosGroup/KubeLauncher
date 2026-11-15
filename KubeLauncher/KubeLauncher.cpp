@@ -3,6 +3,7 @@
 #include "ulix/align.hpp"
 #include "ulix/box.hpp"
 #include "ulix/element.hpp"
+#include "ulix/size.hpp"
 
 #include <ulix/gradbutton.hpp>
 #include <ulix/label.hpp>
@@ -19,14 +20,14 @@ auto render(ulx::context& ctx) -> ulx::scene {
         .box(ulx::verbox)
         .align(ulx::aligntop)
         .pad(0)
-        
+
         .child(ulx::element("titlebar")
-            .size(ulx::size::fullw(40.0f))
+            .size(ulx::size::fullw(40))
             .child(close_button.create(
                 [] ulx_lambda_pressed {
                     ctx.exit();
                 }, ulx::color(196, 43, 28, 240), ulx::color(196, 43, 28, 255))
-                .size({48.5f, 40.0f})
+                .size({48.5, 40})
                 .icon("icon", kl::svg("close.svg"), {25, 25})
             )
             .child(max_button.create(
@@ -36,10 +37,10 @@ auto render(ulx::context& ctx) -> ulx::scene {
                         return;
                     } ctx.win_max();
                 }, ulx::color(60, 60, 60, 240), ulx::color(60, 60, 60, 225))
-                .size({48.5f, 40.0f})
+                .size({48.5, 40})
 
-                .when(ctx.win_maxed(), 
-                    [] ulx_lambda_when { slf.icon("icon", kl::svg("restore.svg"), {25, 25}); }, 
+                .when(ctx.win_maxed(),
+                    [] ulx_lambda_when { slf.icon("icon", kl::svg("restore.svg"), {25, 25}); },
                     [] ulx_lambda_else { slf.icon("icon", kl::svg("rectangle.svg"), {25, 25}); }
                 )
             )
@@ -47,14 +48,21 @@ auto render(ulx::context& ctx) -> ulx::scene {
                 [] ulx_lambda_pressed {
                     ctx.win_min();
                 }, ulx::color(60, 60, 60, 240), ulx::color(60, 60, 60, 225))
-                .size({48.5f, 40.0f})
+                .size({48.5, 40})
                 .icon("icon", kl::svg("minimize.svg"), {25, 25})
             )
 
             .back({22, 22, 22})
             .box(ulx::horbox).align(ulx::alignright)
         )
-        .child(ulx::label("hello", "Hello, KubeLauncher!", Microsoft_Yahei));
+        .child(ulx::element("texture")
+            .size(ulx::size::autos())
+            .back({25, 25, 25, 255})
+            .pos({50, 25})
+            .corner(15)
+            .shadow({0, 0, 0, 255}, 30, 10, {0, 3}, 1.0f)
+            .texture(ulx::path(R"(D:\Images\kentrikos.png)"))
+        );
 }
 
 auto main(int argc, char* argv[]) -> int {

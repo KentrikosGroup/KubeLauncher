@@ -28,12 +28,12 @@ namespace kl {
         return datas_dir.with("images", "svgs", name).str();
     }
 
-    inline void init(char* argv[], ulx::arr<ulx::u32, 3> version, ulx::context::rendercallback render_callback) {
+    inline void init(char* argv[], ulx::context::rendercallback render_callback) {
         cwd = ulx::path(argv[0]).parent();
         datas_dir = cwd.with("datas");
 
         ensure_cachedir_exists(cwd);
-        window_info = ulx::wininfo("KubeLauncher", "KubeLauncherWindowClass")
+        window_info = ulx::wininfo("KubeLauncher")
             .unattr(ulx::winattr::titledattr)
             .size(ulx::size::from_ratio(ulx::screen::width() * 0.8f, 0.625f))
             .min(ulx::size::from_ratio(ulx::screen::width() * 0.8f, 0.625f))
@@ -41,7 +41,6 @@ namespace kl {
             .vtitlebar(40.0f).vclose(48.5f)
             .vmin(48.5f).vmax(48.5f);
         app_info = ulx::appinfo("KubeLauncher", cwd.with("cache"))
-            .version(version[0], version[1], version[2])
             .icon(datas_dir.with("images", "icon.ico"));
         render_info = ulx::renderinfo(render_callback);
     }

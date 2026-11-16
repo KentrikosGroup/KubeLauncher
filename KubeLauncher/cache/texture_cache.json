@@ -1,13 +1,5 @@
 {
-    "bitmap": {
-        "D:\\Images\\kentrikos_big.png": [
-            2,
-            0.0,
-            0.0,
-            1.0,
-            1.0
-        ]
-    },
+    "bitmap": {},
     "vector": [
         [
             "D:\\KubeLauncher\\KubeLauncher\\datas\\images\\svgs\\close.svg",
@@ -34,6 +26,18 @@
             0.048828125
         ],
         [
+            "D:\\KubeLauncher\\KubeLauncher\\datas\\images\\svgs\\restore.svg",
+            25.0,
+            25.0
+        ],
+        [
+            1,
+            0.14794921875,
+            0.0,
+            0.048828125,
+            0.048828125
+        ],
+        [
             "D:\\KubeLauncher\\KubeLauncher\\datas\\images\\svgs\\rectangle.svg",
             25.0,
             25.0
@@ -49,7 +53,7 @@
     "font": [],
     "atlas_cfg": {
         "current_atlas_index": 1,
-        "current_atlas_x": 303,
+        "current_atlas_x": 404,
         "current_atlas_y": 0,
         "current_atlas_max_height": 101
     },
